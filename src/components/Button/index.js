@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   background: transparent;
-  border-radius: 10px;
+  border-radius: 5px;
   color: ${(props) => props.theme.primary};
   padding: 0.75em 1em;
   border: ${(props) => "1px solid " + props.theme.primary};
@@ -13,6 +13,7 @@ const Button = styled.button`
 
   &:hover {
     background: ${(props) => props.theme.hoverPrimary};
+    box-shadow: 2px 2px 1px 1px #ddd;
   }
 
   ${(props) =>
