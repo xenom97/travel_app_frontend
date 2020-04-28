@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 const Text = styled.p((props) => {
   const textColor = props.primary ? props.theme.primary : props.color;

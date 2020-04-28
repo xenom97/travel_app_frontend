@@ -29,7 +29,6 @@ const StyledCard = styled.div`
 
   ${(props) =>
     css`
-      height: ${console.log(props)};
       width: ${props.width}px;
       justify-content: ${props.center ? "center" : null};
       align-items: ${props.center ? "center" : null};

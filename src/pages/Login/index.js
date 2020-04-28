@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Button, Card, Input, Text, Padding } from "../../components";
+import { authLogin } from "../../service/auth.api";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const loginHandler = () => {
-    console.log(username);
-    console.log(password);
+    authLogin({ username, password });
   };
 
   return (
@@ -21,14 +21,13 @@ function Login() {
       }}
     >
       <Card
-        height="300"
         width="350"
         center
         header={require("../../assets/images/header.jpg")}
       >
         <Padding top="20">
           <Text primary uppercase bold size="18">
-            User Login
+            Admin Login
           </Text>
         </Padding>
         <Padding>
@@ -51,7 +50,7 @@ function Login() {
         </Padding>
         <Padding bottom="20">
           <Button primary onClick={loginHandler}>
-            Admin Login
+            Login
           </Button>
         </Padding>
       </Card>
