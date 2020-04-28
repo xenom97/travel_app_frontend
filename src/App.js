@@ -4,17 +4,16 @@ import { ThemeProvider } from "styled-components";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { darkTheme, lightTheme } from "./theme";
-
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faUser, faLock } from "@fortawesome/free-solid-svg-icons";
 import "./App.css";
 
-function App() {
-  const [darkMode, setDarkMode] = useState(false);
+library.add(faUser, faLock);
 
+function App() {
   return (
-    <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={lightTheme}>
       <Router>
-        {/* test */}
-        <button onClick={() => setDarkMode(!darkMode)}>TEST DARK MODE</button>
         <Switch>
           <Route component={Login} exact path="/" />
           <Route component={Home} path="/home" />
