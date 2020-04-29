@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { Button, Card, Input, Text, Padding } from "../../components";
-import { authLogin } from "../../service/auth.api";
+import { useDispatch, useSelector } from "react-redux";
+import { authLogin } from "../../store/actions";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
 
   const loginHandler = () => {
-    authLogin({ username, password });
+    dispatch(authLogin({ username, password }));
   };
 
   return (
