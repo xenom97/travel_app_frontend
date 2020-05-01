@@ -5,7 +5,7 @@ const Card = (props) => {
   if (props.header) {
     return (
       <StyledCard {...props} noPadding>
-        <img height="100%" width="100%" src={props.header} />
+        <img height="100%" width="100%" src={props.header} alt="Card Header" />
         {props.children}
       </StyledCard>
     );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card, Input, Text, Padding } from "../../components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { authLogin } from "../../store/actions";
 
 function Login() {
