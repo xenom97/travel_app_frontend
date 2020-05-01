@@ -5,5 +5,6 @@ import Padding from "./Padding";
 import Text from "./Text";
 import Sidebar from "./Sidebar";
 import Content from "./Content";
+import Navbar from "./Navbar";
 
-export { Button, Card, Input, Padding, Text, Sidebar, Content };
+export { Button, Card, Input, Padding, Text, Sidebar, Content, Navbar };

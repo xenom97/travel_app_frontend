@@ -1,41 +1,30 @@
 import React, { Fragment } from "react";
-import { Sidebar, Content } from "../../components";
-import { Route, Switch } from "react-router";
-import Login from "../Login";
-import Home from "../Home";
-import Destination from "../Destination";
-
-const menuItems = [
-  {
-    name: "home",
-    label: "Home",
-    icon: "user-alt",
-    path: "/",
-    exact: true,
-    page: Home,
-  },
-  {
-    name: "destination",
-    label: "Destination",
-    icon: "map-marked-alt",
-    path: "/destionation",
-    exact: false,
-    page: Destination,
-  },
-  {
-    name: "logout",
-    label: "Logout",
-    icon: "sign-out-alt",
-    path: "/login",
-    exact: false,
-    page: Login,
-  },
-];
+import { Sidebar, Content, Navbar, Padding, Button } from "../../components";
+import { Route, Switch, useHistory } from "react-router";
+import { authLogout } from "../../store/actions";
+import { useDispatch } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import menuItems from "./menu";
 
 function Dashboard() {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const logOutHandler = () => {
+    dispatch(authLogout());
+    history.push("/login");
+  };
+
   return (
     <Fragment>
-      <Sidebar items={menuItems} />
+      <Sidebar items={menuItems} title="Travel Dashboard" />
+      <Navbar>
+        <Padding>
+          <Button primary onClick={logOutHandler}>
+            SIGN OUT <FontAwesomeIcon icon="sign-out-alt" color="#fff" />
+          </Button>
+        </Padding>
+      </Navbar>
       <Content>
         <Switch>
           {menuItems.map((item, index) => (
@@ -46,6 +35,8 @@ function Dashboard() {
               key={index}
             />
           ))}
+          {/* Others routes */}
+          {/* <Route component={Login} path="/login" /> */}
         </Switch>
       </Content>
     </Fragment>

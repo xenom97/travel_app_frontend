@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Padding from "../Padding";
 import Text from "../Text";
@@ -8,8 +8,14 @@ import { Link } from "react-router-dom";
 const Sidebar = (props) => {
   return (
     <Container>
+      <Text align="center" color="#FFF" bold uppercase size={28}>
+        {props.title}
+      </Text>
+      <Padding top={30} />
       {props.items.map((item, index) => (
-        <List {...item} key={index} />
+        <Padding left={8} right={8} top={0} bottom={0} key={index}>
+          <List {...item} />
+        </Padding>
       ))}
     </Container>
   );
@@ -36,6 +42,7 @@ const ListContainer = styled.div`
   margin: 0.25em 0;
   cursor: pointer;
   padding: 0 0.25em;
+  border-radius: 5px;
 
   &:hover {
     background: ${(props) => props.theme.hoverPrimary};

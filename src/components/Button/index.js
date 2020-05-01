@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 const Button = styled.button`
   background: transparent;
   border-radius: 5px;
-  color: ${(props) => props.theme.primary};
+  color: ${(props) => props.fontColor || props.theme.primary};
   padding: 0.75em 1em;
   border: ${(props) => "1px solid " + props.theme.primary};
   text-transform: uppercase;
