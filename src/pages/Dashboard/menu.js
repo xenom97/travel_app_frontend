@@ -14,8 +14,8 @@ const menu = [
     name: "destination",
     label: "Destination",
     icon: "map-marked-alt",
-    path: "/destionation",
-    exact: false,
+    path: "/destination",
+    exact: true,
     page: Destination,
   },
 ];

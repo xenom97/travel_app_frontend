@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { Button, Card, Input, Text, Padding } from "../../components";
 import { useDispatch } from "react-redux";
 import { authLogin } from "../../store/actions";
+import { useHistory } from "react-router";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const loginHandler = () => {
     dispatch(authLogin({ username, password }));
+    history.push("/");
   };
 
   return (
