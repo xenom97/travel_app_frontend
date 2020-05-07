@@ -11,11 +11,27 @@ import {
   faUserAlt,
   faSignOutAlt,
   faMapMarkedAlt,
+  faPlusCircle,
+  faArrowAltCircleLeft,
+  faArrowLeft,
+  faPlusSquare,
+  faCameraRetro,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import "./App.css";
 
-library.add(faUser, faLock, faUserAlt, faSignOutAlt, faMapMarkedAlt);
+library.add(
+  faUser,
+  faLock,
+  faUserAlt,
+  faSignOutAlt,
+  faMapMarkedAlt,
+  faPlusCircle,
+  faArrowAltCircleLeft,
+  faArrowLeft,
+  faPlusSquare,
+  faCameraRetro
+);
 
 function App() {
   const token = useSelector((state) => state.auth.token);

@@ -1,11 +1,41 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import Text from "../Text";
+import Button from "../Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Card = (props) => {
   if (props.header) {
     return (
       <StyledCard {...props} noPadding>
         <img height="100%" width="100%" src={props.header} alt="Card Header" />
+        {props.children}
+      </StyledCard>
+    );
+  }
+
+  if (props.title) {
+    return (
+      <StyledCard {...props}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginBottom: 20,
+          }}
+        >
+          <Text uppercase size="18">
+            {props.title}
+          </Text>
+          {props.action ? (
+            <Button onClick={props.action.onPress} primary>
+              <FontAwesomeIcon color="#fff" icon={props.action.icon} />
+              {props.action.title}
+            </Button>
+          ) : null}
+        </div>
         {props.children}
       </StyledCard>
     );

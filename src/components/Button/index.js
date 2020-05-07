@@ -10,10 +10,11 @@ const Button = styled.button`
   cursor: pointer;
   transition: 0.3s;
   outline: none;
-
-  &:hover {
+  width: ${(props) => props.width || null};
+  height: ${(props) => props.height || null};
+  \ &:hover {
     background: ${(props) => props.theme.hoverPrimary};
-    box-shadow: 2px 2px 1px 1px #ddd;
+    // box-shadow: 2px 2px 1px 1px #ddd;
   }
 
   ${(props) =>

@@ -5,6 +5,7 @@ import { authLogout } from "../../store/actions";
 import { useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import menuItems from "./menu";
+import AddDestination from "../Destination/AddDestination";
 
 function Dashboard() {
   const dispatch = useDispatch();
@@ -35,8 +36,7 @@ function Dashboard() {
               key={index}
             />
           ))}
-          {/* Others routes */}
-          {/* <Route component={Login} path="/login" /> */}
+          <Route component={AddDestination} path={"/destination/create"} />
         </Switch>
       </Content>
     </Fragment>
