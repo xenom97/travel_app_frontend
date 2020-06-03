@@ -1,7 +1,12 @@
-import { SET_DESTINATIONS } from "../actions/actionTypes";
+import {
+  SET_DESTINATIONS,
+  DELETE_DESTINATION,
+  SET_SELECTED_DESTINATION,
+} from "../actions/actionTypes";
 
 const initialState = {
   destinations: [],
+  selectedDestination: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +15,18 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         destinations: action.value,
+      };
+    case DELETE_DESTINATION:
+      return {
+        ...state,
+        destinations: state.destinations.filter(
+          (data) => data.id !== action.value
+        ),
+      };
+    case SET_SELECTED_DESTINATION:
+      return {
+        ...state,
+        selectedDestination: action.value,
       };
     default:
       return state;

@@ -1,9 +1,15 @@
 import React, { useEffect } from "react";
-import { Card } from "../../components";
+import { Card, Button, Padding } from "../../components";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDestinations } from "../../store/actions";
+import {
+  getDestinations,
+  deleteDestination,
+  setSelectedDestination,
+} from "../../store/actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./index.css";
+import alert from "../../helper/alert";
 
 function Destination() {
   const history = useHistory();
@@ -13,6 +19,19 @@ function Destination() {
   useEffect(() => {
     dispatch(getDestinations());
   }, []);
+
+  const deleteDestinations = (destinationId) => {
+    alert.confirmation().then((result) => {
+      if (result.value) {
+        dispatch(deleteDestination(destinationId));
+      }
+    });
+  };
+
+  const goToEditPage = (selectedDestination) => {
+    dispatch(setSelectedDestination(selectedDestination));
+    history.push("/destination/edit/" + selectedDestination.id);
+  };
 
   return (
     <Card
@@ -28,17 +47,18 @@ function Destination() {
           <tr>
             <th width="5%">No</th>
             <th width="20%">Destination Name</th>
-            <th width="25%">Description</th>
+            <th width="20%">Description</th>
             <th width="10%">Location</th>
             <th width="10%">Price</th>
-            <th width="30%">Image</th>
+            <th width="25%">Image</th>
+            <th width="10%">Action</th>
           </tr>
         </thead>
         <tbody>
           {destinations.length
             ? destinations.map((item, index) => {
                 return (
-                  <tr key={index}>
+                  <tr key={index} className="row-data">
                     <td>{index + 1}</td>
                     <td>{item.name}</td>
                     <td>{item.description}</td>
@@ -60,6 +80,26 @@ function Destination() {
                           className="preview-image"
                         />
                       ))}
+                    </td>
+                    <td className="action-container">
+                      <Padding>
+                        <Button
+                          danger
+                          width="50px"
+                          onClick={() => deleteDestinations(item.id)}
+                        >
+                          <FontAwesomeIcon icon="trash-alt" color="#fff" />
+                        </Button>
+                      </Padding>
+                      <Padding>
+                        <Button
+                          warning
+                          width="50px"
+                          onClick={() => goToEditPage(item)}
+                        >
+                          <FontAwesomeIcon icon="edit" color="#fff" />
+                        </Button>
+                      </Padding>
                     </td>
                   </tr>
                 );

@@ -16,6 +16,8 @@ import {
   faArrowLeft,
   faPlusSquare,
   faCameraRetro,
+  faEdit,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import "./App.css";
@@ -30,7 +32,9 @@ library.add(
   faArrowAltCircleLeft,
   faArrowLeft,
   faPlusSquare,
-  faCameraRetro
+  faCameraRetro,
+  faEdit,
+  faTrashAlt
 );
 
 function App() {

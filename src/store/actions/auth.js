@@ -1,13 +1,16 @@
 import { AUTH_SET_TOKEN, AUTH_REMOVE_TOKEN } from "./actionTypes";
 import { POST } from "../../helper/api";
+import alert from "../../helper/alert";
 
 export const authLogin = (data) => {
   return async (dispatch) => {
     const response = await POST("/admins/login", data);
-    if (response.data.success) {
-      const token = response.data.result;
+    if (response.success) {
+      const token = response.result;
       localStorage.setItem("token", JSON.stringify(token));
       dispatch({ type: AUTH_SET_TOKEN, token });
+    } else {
+      alert.error(response.message);
     }
   };
 };

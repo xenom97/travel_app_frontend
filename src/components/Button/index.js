@@ -12,15 +12,39 @@ const Button = styled.button`
   outline: none;
   width: ${(props) => props.width || null};
   height: ${(props) => props.height || null};
-  \ &:hover {
+
+  &:hover {
     background: ${(props) => props.theme.hoverPrimary};
-    // box-shadow: 2px 2px 1px 1px #ddd;
   }
 
   ${(props) =>
     props.primary &&
     css`
       background: ${props.theme.primary};
+      color: white;
+      border: none;
+    `};
+
+  ${(props) =>
+    props.success &&
+    css`
+      background: ${props.theme.success};
+      color: white;
+      border: none;
+    `};
+
+  ${(props) =>
+    props.danger &&
+    css`
+      background: ${props.theme.danger};
+      color: white;
+      border: none;
+    `};
+
+  ${(props) =>
+    props.warning &&
+    css`
+      background: ${props.theme.warning};
       color: white;
       border: none;
     `};
