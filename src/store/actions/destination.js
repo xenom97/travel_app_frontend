@@ -31,12 +31,15 @@ export const saveDestination = (data) => {
   };
 };
 
-export const deleteDestination = (id) => {
+export const deleteDestination = (destination) => {
   return async (dispatch) => {
-    const response = await DELETE("/destinations/delete/" + id);
+    alert.loading();
+    const response = await DELETE("/destinations/delete/" + destination.id, {
+      names: destination.name,
+    });
     if (response.success) {
       alert.success();
-      dispatch({ type: DELETE_DESTINATION, value: id });
+      dispatch({ type: DELETE_DESTINATION, value: destination.id });
     } else {
       alert.error(response.message);
     }

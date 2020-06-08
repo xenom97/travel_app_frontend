@@ -20,10 +20,14 @@ function Destination() {
     dispatch(getDestinations());
   }, []);
 
-  const deleteDestinations = (destinationId) => {
+  const deleteDestinations = (selectedDestination) => {
+    const name = selectedDestination.DestinationImages.map(
+      (destination) => destination.name
+    );
+    console.log("name : ", { name, id: selectedDestination.id });
     alert.confirmation().then((result) => {
       if (result.value) {
-        dispatch(deleteDestination(destinationId));
+        dispatch(deleteDestination({ name, id: selectedDestination.id }));
       }
     });
   };
@@ -86,7 +90,7 @@ function Destination() {
                         <Button
                           danger
                           width="50px"
-                          onClick={() => deleteDestinations(item.id)}
+                          onClick={() => deleteDestinations(item)}
                         >
                           <FontAwesomeIcon icon="trash-alt" color="#fff" />
                         </Button>

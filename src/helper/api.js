@@ -65,13 +65,16 @@ export const UPDATE_FORM = (endPoint, payload) => {
   });
 };
 
-export const DELETE = (endPoint) => {
+export const DELETE = (endPoint, payload) => {
+  console.log("payload: ", payload);
   return new Promise((resolve, reject) => {
     fetch(URL + endPoint, {
       method: "DELETE",
       headers: {
+        "Content-Type": "application/json",
         Authorization: getHeader(),
       },
+      body: JSON.stringify(payload),
     })
       .then((response) => response.json())
       .then((response) => resolve(response))
